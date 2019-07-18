@@ -1,0 +1,28 @@
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.2.3
+    hooks:
+    -   id: trailing-whitespace
+    -   id: end-of-file-fixer
+    -   id: double-quote-string-fixer
+-   repo: https://github.com/python/black
+    rev: stable
+    hooks:
+    -   id: black
+-   repo: https://github.com/timothycrosley/isort
+    rev: 4.3.21-2
+    hooks:
+    -   id: isort
+-   repo: https://github.com/lucassouto/pylava-pre-commit
+    rev: 0.0.2
+    hooks:
+    -   id: pylava
+-   repo: local
+    hooks:
+    -   id: tests
+        name: run tests
+        entry: pytest -vvv
+        pass_filenames: false
+        language: system
+        types: [python]
+        stages: [push]

@@ -1,0 +1,23 @@
+sudo: required
+dist: xenial
+language: python
+
+python:
+  - "3.7"
+
+install:
+  - pipenv install --dev --system
+
+script:
+  - pytest -vvv
+
+after_success:
+  - pytest --cov
+  - codecov
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: $HEROKU_TOKEN
+  app:
+    master: workolist-lucas
